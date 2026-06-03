@@ -138,21 +138,210 @@ elif menu == "Studi Kasus":
             """
         )
 
-        # HTML animasi
-        html_code = f"""
-        <html>
-        <body>
-        <h3 style='text-align:center'>
-        Simulasi Partikel (kecepatan = {kecepatan:.2f})
-        </h3>
-        </body>
-        </html>
-        """
+       # ====================================
+# KECEPATAN ANIMASI
+# ====================================
 
-        components.html(
-            html_code,
-            height=100
-        )
+    kecepatan = max(1, 12 - (T / 100))
+
+# ====================================
+# PENJELASAN
+# ====================================
+
+    st.info(
+        f"""
+        Tekanan = {P} atm
+        
+        Suhu = {T} K
+        
+        Bobot Molekul = {M} g/mol
+        
+        Semakin tinggi suhu, partikel bergerak semakin cepat.
+        """
+    )
+
+# ====================================
+# HTML + CSS ANIMASI
+# ====================================
+
+    html_code = f"""
+    <!DOCTYPE html>
+    <html>
+    
+    <head>
+    
+    <style>
+    
+    body {{
+    margin:0;
+    overflow:hidden;
+    background-color:transparent;
+    }}
+
+    .kotak {{
+    width:100%;
+    height:420px;
+
+    position:relative;
+    overflow:hidden;
+
+    border-radius:20px;
+
+    background:
+    radial-gradient(circle,
+    #1e3a8a,
+    #020617);
+
+    border:2px solid cyan;
+
+    box-shadow:
+    0px 0px 25px rgba(0,255,255,0.4);
+    }}
+
+    .bola {{
+
+    width:18px;
+    height:18px;
+
+    position:absolute;
+
+    border-radius:50%;
+
+    background:cyan;
+
+    box-shadow:
+    0 0 15px cyan,
+    0 0 30px cyan;
+    }}
+
+    .b1 {{
+    animation: gerak1 {kecepatan}s linear infinite alternate;
+    }}
+
+    .b2 {{
+    animation: gerak2 {kecepatan*0.8}s linear infinite alternate;
+    }}
+
+    .b3 {{
+    animation: gerak3 {kecepatan*1.2}s linear infinite alternate;
+    }}
+
+    .b4 {{
+    animation: gerak4 {kecepatan*0.6}s linear infinite alternate;
+    }}
+
+    @keyframes gerak1 {{
+    
+    from {{
+        transform: translate(0px,0px);
+        }}
+
+    to {{
+        transform: translate(320px,240px);
+        }}
+        }}
+
+    @keyframes gerak2 {{
+    
+    from {{
+        transform: translate(0px,200px);
+        }}
+
+    to {{
+        transform: translate(280px,-60px);
+        }}
+        }}
+
+    @keyframes gerak3 {{
+    
+    from {{
+        transform: translate(150px,0px);
+        }}
+        
+        to {{
+        transform: translate(-120px,250px);
+        }}
+        }}
+
+    @keyframes gerak4 {{
+    
+    0% {{
+        transform: translate(0px,0px);
+        }}
+        
+    25% {{
+        transform: translate(220px,50px);
+        }}
+
+    50% {{
+        transform: translate(100px,220px);
+        }}
+
+    75% {{
+        transform: translate(260px,130px);
+        }}
+
+    100% {{
+        transform: translate(50px,260px);
+        }}
+        }}
+
+    </style>
+
+    </head>
+
+    <body>
+
+    <div class="kotak">
+
+    <div class="bola b1"
+    style="left:20px; top:20px;">
+    </div>
+
+    <div class="bola b2"
+    style="left:80px; top:100px;">
+    </div>
+
+    <div class="bola b3"
+    style="left:180px; top:150px;">
+    </div>
+
+    <div class="bola b4"
+    style="left:300px; top:80px;">
+    </div>
+
+    <div class="bola b1"
+    style="left:400px; top:200px;">
+    </div>
+
+    <div class="bola b2"
+    style="left:520px; top:140px;">
+    </div>
+
+    <div class="bola b3"
+    style="left:620px; top:240px;">
+    </div>
+
+    <div class="bola b4"
+    style="left:700px; top:100px;">
+    </div>
+
+    </div>
+
+    </body>
+    </html>
+    """
+
+# ====================================
+# TAMPILKAN ANIMASI
+# ====================================
+
+    st.subheader("🌌 Simulasi Pergerakan Partikel")
+
+    components.html(
+        html_code,
+        height=430
+    )
 
         st.subheader("Persamaan Gas Ideal")
 
