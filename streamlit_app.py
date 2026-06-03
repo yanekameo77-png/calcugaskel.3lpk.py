@@ -393,7 +393,7 @@ elif menu == "Studi Kasus":
                 text-align:center;
                 font-size:35px;
                 ">
-                {hasil:2f} g/L
+                {hasil:.2f} g/L
                 </h2>
 
                 <br>
