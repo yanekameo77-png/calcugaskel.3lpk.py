@@ -117,7 +117,7 @@ elif menu == "Studi Kasus":
             298
         )
 
-        M = st.number_input(
+        n = st.number_input(
             "Bobot Molekul Gas (g/mol)",
             value=32.0
         )
