@@ -59,16 +59,16 @@ elif menu == "Studi Kasus":
 #===================================
 #ANALISIS GAS IDEAL
 #===================================
-if pilihan == "Analisis Gas Ideal":
-    
-    st.subheader("🧪 Studi Kasus Gas Ideal")
-
-    P = st.number_input("Tekanan (atm)", value=1.0)
-    V = st.number_input("Volume (L)", value=10.0)
-    n = st.number_input("Mol gas", value=1.0)
-    T = st.number_input("Suhu (K)", value=300.0)
-
-    R = 0.0821
+    if pilihan == "Analisis Gas Ideal":
+        
+        st.subheader("🧪 Studi Kasus Gas Ideal")
+        
+        P = st.number_input("Tekanan (atm)", value=1.0)
+        V = st.number_input("Volume (L)", value=10.0)
+        n = st.number_input("Mol gas", value=1.0)
+        T = st.number_input("Suhu (K)", value=300.0)
+        
+        R = 0.0821
 
     if st.button("Analisis"):
 
@@ -380,61 +380,62 @@ elif pilihan == "Simulasi Massa Jenis Gas":
                 time.sleep(0.01)
                 progress.progress(i + 1)
      # Efek sukses
-    st.success("Perhitungan berhasil✨!")
-    st.balloons()
-    st.markdown(
-        f"""
-        <div style="
-        background:linear-gradient(to right,#BFEFFF,#87CEFA);
-        padding:30px;
-        border-radius:20px;
-        color:black;
-        box-shadow:0px 0px 25px rgba(137,207,240,0.6);
-        animation: fadein 1s;
-        ">
+        st.success("Perhitungan berhasil✨!")
+        st.balloons()
         
-        <h1 style="
-        text-align:center;
-        font-size:40px;
-        ">
-        Massa Jenis Gas
-        </h1>
-        
-        <hr>
-        
-        <h2 style="
-        text-align:center;
-        font-size:35px;
-        ">
-        {hasil:.2f} g/L
-        </h2>
-        
-        <br>
-        
-        <h3> Kesimpulan</h3>
-        
-        <p style="font-size:20px; line-height:1.8;">
-        
-        Dengan:
-        <br>
-        • tekanan = {P} atm
-        <br>
-        • suhu = {T} K
-        <br>
-        • Bobot Molekul = {M} g/mol
-        <br><br>
-        
-        maka massa jenis gas adalah:
-        
-        <b>{hasil:.2f} g/L</b>
-        
-        </p>
-        
-        </div>
-        """,
-        
-        unsafe_allow_html=True
-    )
+        st.markdown(
+            f"""
+            <div style="
+            background:linear-gradient(to right,#BFEFFF,#87CEFA);
+            padding:30px;
+            border-radius:20px;
+            color:black;
+            box-shadow:0px 0px 25px rgba(137,207,240,0.6);
+            animation: fadein 1s;
+            ">
+            
+            <h1 style="
+            text-align:center;
+            font-size:40px;
+            ">
+            Massa Jenis Gas
+            </h1>
+            
+            <hr>
+            
+            <h2 style="
+            text-align:center;
+            font-size:35px;
+            ">
+            {hasil:.2f} g/L
+            </h2>
+            
+            <br>
+            
+            <h3> Kesimpulan</h3>
+            
+            <p style="font-size:20px; line-height:1.8;">
+            
+            Dengan:
+            <br>
+            • tekanan = {P} atm
+            <br>
+            • suhu = {T} K
+            <br>
+            • Bobot Molekul = {M} g/mol
+            <br><br>
+            
+            maka massa jenis gas adalah:
+            
+            <b>{hasil:.2f} g/L</b>
+            
+            </p>
+            
+            </div>
+            """,
+            
+            unsafe_allow_html=True
+        )
 
 # ====================================
 # TEST
