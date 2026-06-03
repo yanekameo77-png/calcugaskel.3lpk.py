@@ -123,8 +123,16 @@ elif menu == "Studi Kasus":
         )
 
         R = 0.082
+        
+        #===================
+        #KECEPATAN ANIMASI
+        #===================
 
         kecepatan = max(1, 12 - (T / 100))
+
+        # =======================
+        # PENJELASAN
+        # =======================
 
         st.info(
             f"""
@@ -132,129 +140,101 @@ elif menu == "Studi Kasus":
 
             Suhu = {T} K
 
-            Bobot Molekul = {M} g/mol
+            Bobot Molekul = {n} g/mol
 
             Semakin tinggi suhu, partikel bergerak semakin cepat.
             """
         )
+        #====================
+        #HTML + CSS ANIMASI
+        #=====================
 
-       # ====================================
-# KECEPATAN ANIMASI
-# ====================================
+        html_code = f"""
+        <!DOCTYPE html>
 
-    kecepatan = max(1, 12 - (T / 100))
+        <head>
 
-# ====================================
-# PENJELASAN
-# ====================================
+        <style>
 
-    st.info(
-        f"""
-        Tekanan = {P} atm
-        
-        Suhu = {T} K
-        
-        Bobot Molekul = {M} g/mol
-        
-        Semakin tinggi suhu, partikel bergerak semakin cepat.
-        """
-    )
-
-# ====================================
-# HTML + CSS ANIMASI
-# ====================================
-
-    html_code = f"""
-    <!DOCTYPE html>
-    <html>
-    
-    <head>
-    
-    <style>
-    
-    body {{
-    margin:0;
-    overflow:hidden;
-    background-color:transparent;
-    }}
-
-    .kotak {{
-    width:100%;
-    height:420px;
-
-    position:relative;
-    overflow:hidden;
-
-    border-radius:20px;
-
-    background:
-    radial-gradient(circle,
-    #1e3a8a,
-    #020617);
-
-    border:2px solid cyan;
-
-    box-shadow:
-    0px 0px 25px rgba(0,255,255,0.4);
-    }}
-
-    .bola {{
-
-    width:18px;
-    height:18px;
-
-    position:absolute;
-
-    border-radius:50%;
-
-    background:cyan;
-
-    box-shadow:
-    0 0 15px cyan,
-    0 0 30px cyan;
-    }}
-
-    .b1 {{
-    animation: gerak1 {kecepatan}s linear infinite alternate;
-    }}
-
-    .b2 {{
-    animation: gerak2 {kecepatan*0.8}s linear infinite alternate;
-    }}
-
-    .b3 {{
-    animation: gerak3 {kecepatan*1.2}s linear infinite alternate;
-    }}
-
-    .b4 {{
-    animation: gerak4 {kecepatan*0.6}s linear infinite alternate;
-    }}
-
-    @keyframes gerak1 {{
-    
-    from {{
-        transform: translate(0px,0px);
+        body {{
+        margin:0;
+        overflow:hidden;
+        background-color:transparent;
         }}
 
-    to {{
+        .kotak {{
+        width:100%;
+        height:420px;
+
+        position:relative;
+        overflow:hidden;
+
+        border-radius:20px;
+
+        backround:
+        radial-gradient(circle,
+        #1e3a8a,
+        #020617);
+
+        border:2px solid cyan;
+
+        box-shadow:
+        0px 0px 25px rgba(0,255,255,0.4);
+        }}
+
+        .bola{{
+        width:18px;
+        height:18px;
+
+        position:absolute;
+
+        border-radius:50%;
+
+        background:cyan;
+
+        box-shadow:
+        0 0 15px cyan,
+        0 0 30px cyan;
+        }}
+        
+        .b1 {{
+        animation: gerak1 {kecepatan}s linear infinite alternate;
+        }}
+
+        .b2 {{
+        animation: gerak2 {kecepatan*0,8}s linear infinite alternate;
+        }}
+
+        .b3 {{
+        animation:gerak3 {kecepatan*1,2}s linear infinite alternate;
+        }}
+
+        .b4 {{
+        animation: gerak4 {kecepatan*0,6}s linear infinite alternate;
+        }}
+        @keyframes gerak1 {{
+
+        from {{
+        tranform: translate(0px,0px);
+        }}
+
+        to{{
         transform: translate(320px,240px);
         }}
         }}
 
-    @keyframes gerak2 {{
-    
-    from {{
+        @keyframes gerak2 {{
+        from {{
         transform: translate(0px,200px);
         }}
-
-    to {{
+        to {{
         transform: translate(280px,-60px);
         }}
         }}
 
-    @keyframes gerak3 {{
-    
-    from {{
+        @keyframes gerak3 {{
+        
+        from {{
         transform: translate(150px,0px);
         }}
         
@@ -263,86 +243,88 @@ elif menu == "Studi Kasus":
         }}
         }}
 
-    @keyframes gerak4 {{
-    
-    0% {{
+        @keyframes gerak4 {{
+        
+        0% {{
         transform: translate(0px,0px);
         }}
         
-    25% {{
+        25% {{
         transform: translate(220px,50px);
         }}
 
-    50% {{
+        50% {{
         transform: translate(100px,220px);
         }}
-
-    75% {{
+        
+        75% {{
         transform: translate(260px,130px);
         }}
 
-    100% {{
-        transform: translate(50px,260px);
+        100% {{
+        tranform: translate(50px,260px);
         }}
         }}
 
-    </style>
+        </style>
 
-    </head>
+        </head>
 
-    <body>
+        <body>
 
-    <div class="kotak">
+        <div class="kotak">
 
-    <div class="bola b1"
-    style="left:20px; top:20px;">
-    </div>
+        <div class="bola b1"
+        style="left:20px; top:20px;">
+        </div>
 
-    <div class="bola b2"
-    style="left:80px; top:100px;">
-    </div>
+        <div class="bola b2"
+        style="left:80px; top:100px;">
+        </div>
 
-    <div class="bola b3"
-    style="left:180px; top:150px;">
-    </div>
+        <div class="bola b3"
+        style="left:180px; top:150px;">
+        </div>
 
-    <div class="bola b4"
-    style="left:300px; top:80px;">
-    </div>
+        <div class="bola b4"
+        style="left:300px; top:80px;">
+        </div>
 
-    <div class="bola b1"
-    style="left:400px; top:200px;">
-    </div>
+        <div class="bola b1"
+        style="left:400px; top:200px;">
+        </div>
 
-    <div class="bola b2"
-    style="left:520px; top:140px;">
-    </div>
+        <div class="bola b2"
+        style="left:520px; top:140px;">
+        </div>
 
-    <div class="bola b3"
-    style="left:620px; top:240px;">
-    </div>
+        <div class="bola b3"
+        style="left:620px; top:240px;">
+        </div>
 
-    <div class="bola b4"
-    style="left:700px; top:100px;">
-    </div>
+        <div class="bola b4"
+        style="left:700px; top:100px;">
+        </div>
 
-    </div>
+        </div>
 
-    </body>
-    </html>
-    """
+        </body>
+        </html>
+        """
+        #==================
+        #TAMPILAN ANIMASI
+        #==================
 
-# ====================================
-# TAMPILKAN ANIMASI
-# ====================================
+        st.subheader("🌌 Simulasi Pergerakan Partikel")
 
-    st.subheader("🌌 Simulasi Pergerakan Partikel")
+        component.html(
+            html_code,
+            heigt=430
+        )
 
-    components.html(
-        html_code,
-        height=430
-    )
-
+        #======================
+        # PERSAMAAN GAS IDEAL
+        #======================
         st.subheader("Persamaan Gas Ideal")
 
         st.latex(r"PV=nRT")
@@ -351,17 +333,29 @@ elif menu == "Studi Kasus":
 
         st.latex(r"\rho=\frac{PM}{RT}")
 
-        hasil = (P * M) / (R * T)
+        #=======================
+        # PERHITUNGAN OTOMATIS
+        #=======================
+
+        hasil = (P * n) / (R * T)
+
+        #====================
+        # LANGKAH PERHITUNGAN
+        #====================
 
         st.subheader("Langkah Perhitungan")
 
         st.latex(
-            rf"\rho=\frac{{({P})({M})}}{{({R})({T})}}"
+            rf"\rho=\frac{{({P})({n})}}{{({R})({T})}}"
         )
 
         st.latex(
             rf"\rho={hasil:.2f}\ g/L"
         )
+
+        #==========================
+        # TOMBOL HASIL + KESIMPULAN
+        #===========================
 
         if st.button("✨ Tampilkan Hasil"):
 
@@ -384,7 +378,7 @@ elif menu == "Studi Kasus":
 
                 Suhu = **{T} K**
 
-                Bobot Molekul = **{M} g/mol**
+                Bobot Molekul = **{n} g/mol**
 
                 ## Hasil = **{hasil:.2f} g/L**
                 """
