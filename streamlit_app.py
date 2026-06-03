@@ -1,151 +1,190 @@
 import streamlit as st
+import numpy as np
 import pandas as pd
-import math
-from pathlib import Path
 
-# Set the title and favicon that appear in the Browser's tab bar.
+# =========================
+# CONFIG
+# =========================
 st.set_page_config(
-    page_title='GDP dashboard',
-    page_icon=':earth_americas:', # This is an emoji shortcode. Could be a URL too.
+    page_title="Kalkulator Gas Ideal",
+    page_icon="🧪",
+    layout="centered"
 )
 
-# -----------------------------------------------------------------------------
-# Declare some useful functions.
+st.title("🧪 Kalkulator Gas Ideal")
+st.caption("Hukum Gas + Studi Kasus + Regresi Linear (Full Streamlit)")
 
-@st.cache_data
-def get_gdp_data():
-    """Grab GDP data from a CSV file.
+st.markdown("---")
 
-    This uses caching to avoid having to read the file every time. If we were
-    reading from an HTTP endpoint instead of a file, it's a good idea to set
-    a maximum age to the cache with the TTL argument: @st.cache_data(ttl='1d')
-    """
-
-    # Instead of a CSV on disk, you could read from an HTTP endpoint here too.
-    DATA_FILENAME = Path(__file__).parent/'data/gdp_data.csv'
-    raw_gdp_df = pd.read_csv(DATA_FILENAME)
-
-    MIN_YEAR = 1960
-    MAX_YEAR = 2022
-
-    # The data above has columns like:
-    # - Country Name
-    # - Country Code
-    # - [Stuff I don't care about]
-    # - GDP for 1960
-    # - GDP for 1961
-    # - GDP for 1962
-    # - ...
-    # - GDP for 2022
-    #
-    # ...but I want this instead:
-    # - Country Name
-    # - Country Code
-    # - Year
-    # - GDP
-    #
-    # So let's pivot all those year-columns into two: Year and GDP
-    gdp_df = raw_gdp_df.melt(
-        ['Country Code'],
-        [str(x) for x in range(MIN_YEAR, MAX_YEAR + 1)],
-        'Year',
-        'GDP',
-    )
-
-    # Convert years from string to integers
-    gdp_df['Year'] = pd.to_numeric(gdp_df['Year'])
-
-    return gdp_df
-
-gdp_df = get_gdp_data()
-
-# -----------------------------------------------------------------------------
-# Draw the actual page
-
-# Set the title that appears at the top of the page.
-'''
-# :earth_americas: GDP dashboard
-
-Browse GDP data from the [World Bank Open Data](https://data.worldbank.org/) website. As you'll
-notice, the data only goes to 2022 right now, and datapoints for certain years are often missing.
-But it's otherwise a great (and did I mention _free_?) source of data.
-'''
-
-# Add some spacing
-''
-''
-
-min_value = gdp_df['Year'].min()
-max_value = gdp_df['Year'].max()
-
-from_year, to_year = st.slider(
-    'Which years are you interested in?',
-    min_value=min_value,
-    max_value=max_value,
-    value=[min_value, max_value])
-
-countries = gdp_df['Country Code'].unique()
-
-if not len(countries):
-    st.warning("Select at least one country")
-
-selected_countries = st.multiselect(
-    'Which countries would you like to view?',
-    countries,
-    ['DEU', 'FRA', 'GBR', 'BRA', 'MEX', 'JPN'])
-
-''
-''
-''
-
-# Filter the data
-filtered_gdp_df = gdp_df[
-    (gdp_df['Country Code'].isin(selected_countries))
-    & (gdp_df['Year'] <= to_year)
-    & (from_year <= gdp_df['Year'])
-]
-
-st.header('GDP over time', divider='gray')
-
-''
-
-st.line_chart(
-    filtered_gdp_df,
-    x='Year',
-    y='GDP',
-    color='Country Code',
+# =========================
+# SIDEBAR
+# =========================
+menu = st.sidebar.selectbox(
+    "📌 Pilih Menu",
+    ["Home", "Studi Kasus", "Hukum Boyle", "Hukum Charles", "Hukum Gay-Lussac", "Gas Ideal", "Regresi Linear"]
 )
 
-''
-''
+# =========================
+# HOME
+# =========================
+if menu == "Home":
 
+    st.subheader("👋 Selamat Datang")
 
-first_year = gdp_df[gdp_df['Year'] == from_year]
-last_year = gdp_df[gdp_df['Year'] == to_year]
+    st.success("Aplikasi ini dibuat full Streamlit tanpa library error 🚀")
 
-st.header(f'GDP in {to_year}', divider='gray')
+    st.markdown("""
+    ### 🔬 Fitur:
+    - Hukum Boyle
+    - Hukum Charles
+    - Hukum Gay-Lussac
+    - Gas Ideal (PV = nRT)
+    - 📈 Regresi Linear (LINE CHART)
+    """)
 
-''
+    st.balloons()
 
-cols = st.columns(4)
+# =========================
+# STUDI KASUS
+# =========================
+elif menu == "Studi Kasus":
 
-for i, country in enumerate(selected_countries):
-    col = cols[i % len(cols)]
+    st.subheader("🧪 Studi Kasus Gas Ideal")
 
-    with col:
-        first_gdp = first_year[first_year['Country Code'] == country]['GDP'].iat[0] / 1000000000
-        last_gdp = last_year[last_year['Country Code'] == country]['GDP'].iat[0] / 1000000000
+    P = st.number_input("Tekanan (atm)", value=1.0)
+    V = st.number_input("Volume (L)", value=10.0)
+    n = st.number_input("Mol gas", value=1.0)
+    T = st.number_input("Suhu (K)", value=300.0)
 
-        if math.isnan(first_gdp):
-            growth = 'n/a'
-            delta_color = 'off'
+    R = 0.0821
+
+    if st.button("Analisis"):
+
+        PV = P * V
+        nRT = n * R * T
+
+        st.write(f"PV = {PV:.3f}")
+        st.write(f"nRT = {nRT:.3f}")
+
+        if abs(PV - nRT) < 1:
+            st.success("Sistem sesuai Gas Ideal ✅")
         else:
-            growth = f'{last_gdp / first_gdp:,.2f}x'
-            delta_color = 'normal'
+            st.warning("Ada deviasi dari gas ideal ⚠️")
 
-        st.metric(
-            label=f'{country} GDP',
-            value=f'{last_gdp:,.0f}B',
-            delta=growth,
-            delta_color=delta_color
-        )
+# =========================
+# BOYLE
+# =========================
+elif menu == "Hukum Boyle":
+
+    st.subheader("📘 Hukum Boyle")
+
+    st.latex(r"P_1V_1=P_2V_2")
+
+    P1 = st.number_input("P1", value=1.0)
+    V1 = st.number_input("V1", value=1.0)
+    P2 = st.number_input("P2", value=2.0)
+
+    if st.button("Hitung V2"):
+        if P2 != 0:
+            V2 = (P1 * V1) / P2
+            st.success(f"V2 = {V2:.3f} L")
+
+# =========================
+# CHARLES
+# =========================
+elif menu == "Hukum Charles":
+
+    st.subheader("📘 Hukum Charles")
+
+    st.latex(r"\frac{V_1}{T_1}=\frac{V_2}{T_2}")
+
+    V1 = st.number_input("V1", value=1.0)
+    T1 = st.number_input("T1 (K)", value=273.0)
+    T2 = st.number_input("T2 (K)", value=300.0)
+
+    if st.button("Hitung V2"):
+        V2 = (V1 * T2) / T1
+        st.success(f"V2 = {V2:.3f} L")
+
+# =========================
+# GAY LUSSAC
+# =========================
+elif menu == "Hukum Gay-Lussac":
+
+    st.subheader("📘 Hukum Gay-Lussac")
+
+    st.latex(r"\frac{P_1}{T_1}=\frac{P_2}{T_2}")
+
+    P1 = st.number_input("P1", value=1.0)
+    T1 = st.number_input("T1 (K)", value=273.0)
+    T2 = st.number_input("T2 (K)", value=300.0)
+
+    if st.button("Hitung P2"):
+        P2 = (P1 * T2) / T1
+        st.success(f"P2 = {P2:.3f} atm")
+
+# =========================
+# GAS IDEAL
+# =========================
+elif menu == "Gas Ideal":
+
+    st.subheader("📘 Persamaan Gas Ideal")
+
+    st.latex(r"PV=nRT")
+
+    P = st.number_input("P (atm)", value=1.0)
+    V = st.number_input("V (L)", value=1.0)
+    n = st.number_input("n (mol)", value=1.0)
+
+    R = 0.0821
+
+    if st.button("Hitung T"):
+        T = (P * V) / (n * R)
+        st.success(f"Suhu = {T:.2f} K")
+
+# =========================
+# REGRESI LINEAR (LINE CHART)
+# =========================
+elif menu == "Regresi Linear":
+
+    st.subheader("📈 Regresi Linear (LINE CHART Streamlit)")
+
+    x_input = st.text_input("Data P (pisahkan koma)", "1,2,3,4,5")
+    y_input = st.text_input("Data V (pisahkan koma)", "10,8,6,4,2")
+
+    if st.button("Hitung & Grafik"):
+
+        # convert data
+        x = np.array([float(i) for i in x_input.split(",")])
+        y = np.array([float(i) for i in y_input.split(",")])
+
+        # regresi linear
+        m, b = np.polyfit(x, y, 1)
+        y_pred = m * x + b
+
+        st.success(f"Persamaan: V = {m:.3f}P + {b:.3f}")
+
+        # =========================
+        # DATAFRAME
+        # =========================
+        df = pd.DataFrame({
+            "P": x,
+            "V (data asli)": y,
+            "V (regresi)": y_pred
+        })
+
+        # urutkan biar grafik rapi
+        df = df.sort_values("P")
+
+        # =========================
+        # 📈 LINE CHART (STREAMLIT NATIF)
+        # =========================
+        st.line_chart(df.set_index("P"))
+
+        st.dataframe(df)
+
+# =========================
+# FOOTER
+# =========================
+st.markdown("---")
+st.caption("🚀 Full Streamlit Version | Tanpa Matplotlib | Aman dijalankan")
