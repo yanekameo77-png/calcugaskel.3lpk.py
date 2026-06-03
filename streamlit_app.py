@@ -76,7 +76,6 @@ if pilihan == "Analisis Gas Ideal":
             st.warning("Ada deviasi dari gas ideal ⚠️")
     elif pilihan == "Simulasi Massa Jenis Gas":
         "Streamlit belum terinstall. Jalankan: pip install streamlit"
-    )
 
 import time
 
