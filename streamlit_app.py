@@ -374,20 +374,60 @@ elif menu == "Studi Kasus":
 
             st.markdown(
                 f"""
-                ### Massa Jenis Gas
+                <div style="
+                background:linear-gradient(to right,#BFEFFF,#87CEFA);
+                padding:30px;
+                border-radius:20px;
+                color:black;
+                box-shadow:0px 0px 25px rgba(137,207,240,0.6);
+                animation: fadein 1s;
+                ">
 
-                Tekanan = **{P} atm**
+                <h1 style="
+                text-align:center;
+                font-size:40px;
+                ">
+                Massa Jenis Gas
+                </h1>
 
-                Suhu = **{T} K**
+                <hr>
 
-                Bobot Molekul = **{n} g/mol**
+                <h2 style="
+                text-align:center;
+                font-size:35px;
+                ">
+                {hasil:2f} g/L
+                </h2>
 
-                ## Hasil = **{hasil:.2f} g/L**
-                """
+                <br>
+
+                <h3> Kesimpulan</h3>
+
+                <p style="font-size;20px; line-height:1.8;">
+
+                Dengan:
+                <br>
+                • tekanan = {P} atm
+                <br>
+                • suhu = {T} K
+                <br>
+                • Bobot Molekul = {n} g/mol
+                <br><br>
+
+                Maka massa jenis gas adalah:
+
+                </p>
+
+                </div>
+                """,
+                unsafe_allow_html=True
             )
+            
+        #===================
+        # Test
+        #===================
 
         assert hasil > 0, "Hasil tidak boleh negatif"
-
 
 # =========================
 # BOYLE
