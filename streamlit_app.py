@@ -56,10 +56,8 @@ elif menu == "Studi Kasus":
         "Pilih Studi Kasus",
         ["Analisis Gas Ideal","Simulasi Massa Jenis Gas"]
     )
-#===================================
-#ANALISIS GAS IDEAL
-#===================================
-if pilihan == "Analisis Gas Ideal":
+    
+    if pilihan == "Analisis Gas Ideal":
         
         st.subheader("🧪 Studi Kasus Gas Ideal")
         
@@ -69,14 +67,14 @@ if pilihan == "Analisis Gas Ideal":
         T = st.number_input("Suhu (K)", value=300.0)
         
         R = 0.0821
-
-if st.button("Analisis"):
-
-        PV = P * V
-        nRT = n * R * T
-
-        st.write(f"PV = {PV:.3f}")
-        st.write(f"nRT = {nRT:.3f}")
+        
+        if st.button("Analisis"):
+            
+            PV = P * V
+            nRT = n * R * T
+            
+            st.write(f"PV = {PV:.3f}")
+            st.write(f"nRT = {nRT:.3f}")
 
         if abs(PV - nRT) < 1:
             st.success("Sistem sesuai Gas Ideal ✅")
