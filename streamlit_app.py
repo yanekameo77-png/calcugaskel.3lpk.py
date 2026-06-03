@@ -101,71 +101,71 @@ elif pilihan == "Simulasi Massa Jenis Gas":
 # INPUT PENGGUNA
 # ====================================
 
-st.subheader("Input Variabel")
+    st.subheader("Input Variabel")
 
-P = st.slider(
+    P = st.slider(
     "Tekanan Gas (atm)",
-    0.1,
-    10.0,
-    2.0,
-    0.1
-)
+        0.1,
+        10.0,
+        2.0,
+        0.1
+    )
 
-T = st.slider(
-    "Suhu Gas (K)",
-    100,
-    1000,
-    298
-)
+    T = st.slider(
+        "Suhu Gas (K)",
+        100,
+        1000,
+        298
+    )
 
-M = st.number_input(
-    "Bobot Molekul Gas (g/mol)",
-    value=32.0
-)
+    M = st.number_input(
+        "Bobot Molekul Gas (g/mol)",
+        value=32.0
+    )
 
-R = 0.082
+    R = 0.082
 
 # ====================================
 # KECEPATAN ANIMASI
 # ====================================
 
-kecepatan = max(1, 12 - (T / 100))
+    kecepatan = max(1, 12 - (T / 100))
 
 # ====================================
 # PENJELASAN
 # ====================================
 
-st.info(
-    f"""
-Tekanan = {P} atm
-
-Suhu = {T} K
-
-Bobot Molekul = {M} g/mol
-
-Semakin tinggi suhu, partikel bergerak semakin cepat.
-"""
-)
+    st.info(
+        f"""
+        Tekanan = {P} atm
+        
+        Suhu = {T} K
+        
+        Bobot Molekul = {M} g/mol
+        
+        Semakin tinggi suhu, partikel bergerak semakin cepat.
+        """
+    )
 
 # ====================================
 # HTML + CSS ANIMASI
 # ====================================
 
-html_code = f"""
-<!DOCTYPE html>
-<html>
-
-<head>
-
-<style>
-
-body {{
+    html_code = f"""
+    <!DOCTYPE html>
+    <html>
+    
+    <head>
+    
+    <style>
+    
+    body {{
     margin:0;
     overflow:hidden;
     background-color:transparent;
-}}
+    }}
 
-.kotak {{
+    .kotak {{
     width:100%;
     height:420px;
 
@@ -183,9 +183,9 @@ body {{
 
     box-shadow:
     0px 0px 25px rgba(0,255,255,0.4);
-}}
+    }}
 
-.bola {{
+    .bola {{
 
     width:18px;
     height:18px;
@@ -199,87 +199,87 @@ body {{
     box-shadow:
     0 0 15px cyan,
     0 0 30px cyan;
-}}
+    }}
 
-.b1 {{
+    .b1 {{
     animation: gerak1 {kecepatan}s linear infinite alternate;
-}}
+    }}
 
-.b2 {{
+    .b2 {{
     animation: gerak2 {kecepatan*0.8}s linear infinite alternate;
-}}
+    }}
 
-.b3 {{
+    .b3 {{
     animation: gerak3 {kecepatan*1.2}s linear infinite alternate;
-}}
+    }}
 
-.b4 {{
+    .b4 {{
     animation: gerak4 {kecepatan*0.6}s linear infinite alternate;
-}}
+    }}
 
-@keyframes gerak1 {{
-
+    @keyframes gerak1 {{
+    
     from {{
         transform: translate(0px,0px);
-    }}
+        }}
 
     to {{
         transform: translate(320px,240px);
-    }}
-}}
+        }}
+        }}
 
-@keyframes gerak2 {{
-
+    @keyframes gerak2 {{
+    
     from {{
         transform: translate(0px,200px);
-    }}
+        }}
 
     to {{
         transform: translate(280px,-60px);
-    }}
-}}
+        }}
+        }}
 
-@keyframes gerak3 {{
-
+    @keyframes gerak3 {{
+    
     from {{
         transform: translate(150px,0px);
-    }}
-
-    to {{
+        }}
+        
+        to {{
         transform: translate(-120px,250px);
-    }}
-}}
+        }}
+        }}
 
-@keyframes gerak4 {{
-
+    @keyframes gerak4 {{
+    
     0% {{
         transform: translate(0px,0px);
-    }}
-
+        }}
+        
     25% {{
         transform: translate(220px,50px);
-    }}
+        }}
 
     50% {{
         transform: translate(100px,220px);
-    }}
+        }}
 
     75% {{
         transform: translate(260px,130px);
-    }}
+        }}
 
     100% {{
         transform: translate(50px,260px);
-    }}
-}}
+        }}
+        }}
 
-</style>
+    </style>
 
-</head>
+    </head>
 
-<body>
+    <body>
 
-<div class="kotak">
+    <div class="kotak">
 
     <div class="bola b1"
     style="left:20px; top:20px;">
@@ -313,72 +313,72 @@ body {{
     style="left:700px; top:100px;">
     </div>
 
-</div>
+    </div>
 
-</body>
-</html>
-"""
+    </body>
+    </html>
+    """
 
 # ====================================
 # TAMPILKAN ANIMASI
 # ====================================
 
-st.subheader("🌌 Simulasi Pergerakan Partikel")
+    st.subheader("🌌 Simulasi Pergerakan Partikel")
 
-components.html(
-    html_code,
-    height=430
-)
+    components.html(
+        html_code,
+        height=430
+    )
 
 # ====================================
 # PERSAMAAN GAS IDEAL
 # ====================================
 
-st.subheader("Persamaan Gas Ideal")
+    st.subheader("Persamaan Gas Ideal")
 
-st.latex(r"PV = nRT")
+    st.latex(r"PV = nRT")
 
-st.write(
-    "Untuk mencari massa jenis gas:"
-)
+    st.write(
+        "Untuk mencari massa jenis gas:"
+    )
 
-st.latex(r"\rho = \frac{PM}{RT}")
+    st.latex(r"\rho = \frac{PM}{RT}")
 
 # ====================================
 # PERHITUNGAN OTOMATIS
 # ====================================
 
-hasil = (P * M) / (R * T)
+    hasil = (P * M) / (R * T)
 
 # ====================================
 # LANGKAH PERHITUNGAN
 # ====================================
 
-st.subheader("Langkah Perhitungan")
+    st.subheader("Langkah Perhitungan")
 
-st.latex(
-    rf"\rho = \frac{{({P})({M})}}{{({R})({T})}}"
-)
+    st.latex(
+        rf"\rho = \frac{{({P})({M})}}{{({R})({T})}}"
+    )
 
-st.latex(
-    rf"\rho = {hasil:.2f}\ g/L"
-)
+    st.latex(
+        rf"\rho = {hasil:.2f}\ g/L"
+    )
 
 # ====================================
 # TOMBOL HASIL + kesimpulan
 # ====================================
 
-if st.button("✨ Tampilkan Hasil"):
+    if st.button("✨ Tampilkan Hasil"):
      # Efek loading
-    with st.spinner("Menghitung massa jenis gas..."):
-
-        progress = st.progress(0)
-
-        for i in range(100):
-
-            time.sleep(0.01)
-
-            progress.progress(i + 1)
+        with st.spinner("Menghitung massa jenis gas..."):
+            
+            progress = st.progress(0)
+            
+            for i in range(100):
+                
+                time.sleep(0.01)
+                
+                progress.progress(i + 1)
      # Efek sukses
     st.success("Perhitungan berhasil✨!")
     st.balloons()
@@ -433,13 +433,13 @@ if st.button("✨ Tampilkan Hasil"):
     </div>
     """,
     unsafe_allow_html=True
-)
+    )
 
 # ====================================
 # TEST
 # ====================================
 
-assert hasil > 0, "Hasil tidak boleh negatif"
+    assert hasil > 0, "Hasil tidak boleh negatif"
 # AKHIR BLOK:
 # elif pilihan == "Simulasi Massa Jenis Gas"
 # dan juga akhir blok:
