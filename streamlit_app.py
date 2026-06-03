@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import time 
 
 # =========================
 # CONFIG
@@ -48,10 +49,14 @@ if menu == "Home":
 # STUDI KASUS
 # =========================
 elif menu == "Studi Kasus":
+    
     pilihan = st.selectbox(
         "Pilih Studi Kasus",
         ["Analisis Gas Ideal","Simulasi Massa Jenis Gas"]
     )
+#===================================
+#ANALISIS GAS IDEAL
+#===================================
 if pilihan == "Analisis Gas Ideal":
     st.subheader("🧪 Studi Kasus Gas Ideal")
 
@@ -74,19 +79,11 @@ if pilihan == "Analisis Gas Ideal":
             st.success("Sistem sesuai Gas Ideal ✅")
         else:
             st.warning("Ada deviasi dari gas ideal ⚠️")
-    elif pilihan == "Simulasi Massa Jenis Gas":
-        "Streamlit belum terinstall. Jalankan: pip install streamlit"
-
-import time
 
 # ====================================
-# KONFIGURASI HALAMAN
+# SIMULASI MASSA JENIS GAS
 # ====================================
-st.title("Simulasi Gas Ideal Interaktif) 
-
-# ====================================
-# JUDUL
-# ====================================
+elif pilihan == "Simulasi Massa Jenis Gas":
 
 st.title("Simulasi Gas Ideal Interaktif")
 
