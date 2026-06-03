@@ -48,7 +48,11 @@ if menu == "Home":
 # STUDI KASUS
 # =========================
 elif menu == "Studi Kasus":
-
+    pilihan = st.selectbox(
+        "Pilih Studi Kasus",
+        ["Analisis Gas Ideal","Simulasi Massa Jenis Gas"]
+    )
+if pilihan == "Analisis Gas Ideal":
     st.subheader("🧪 Studi Kasus Gas Ideal")
 
     P = st.number_input("Tekanan (atm)", value=1.0)
@@ -70,6 +74,7 @@ elif menu == "Studi Kasus":
             st.success("Sistem sesuai Gas Ideal ✅")
         else:
             st.warning("Ada deviasi dari gas ideal ⚠️")
+    elif pilihan == "Simulasi Massa Jenis Gas":
 
 # =========================
 # BOYLE
