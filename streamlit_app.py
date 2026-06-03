@@ -59,7 +59,7 @@ elif menu == "Studi Kasus":
 #===================================
 #ANALISIS GAS IDEAL
 #===================================
-if pilihan == "Analisis Gas Ideal":
+     if pilihan == "Analisis Gas Ideal":
         
         st.subheader("🧪 Studi Kasus Gas Ideal")
         
@@ -70,7 +70,7 @@ if pilihan == "Analisis Gas Ideal":
         
         R = 0.0821
 
-if st.button("Analisis"):
+    if st.button("Analisis"):
 
         PV = P * V
         nRT = n * R * T
