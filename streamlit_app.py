@@ -91,11 +91,11 @@ elif pilihan == "Simulasi Massa Jenis Gas":
     st.write("""
     Aplikasi ini menghitung massa jenis gas menggunakan persamaan gas ideal.
 
-Pengguna dapat mengubah:
-- tekanan (atm)
-- suhu (K)
-- Bobot Molekul gas (g/mol)
-""")
+    Pengguna dapat mengubah:
+    - tekanan (atm)
+    - suhu (K)
+    - Bobot Molekul gas (g/mol)
+    """)
 
 # ====================================
 # INPUT PENGGUNA
@@ -444,6 +444,8 @@ assert hasil > 0, "Hasil tidak boleh negatif"
 # elif pilihan == "Simulasi Massa Jenis Gas"
 # dan juga akhir blok:
 # elif menu == "Studi Kasus"
+
+
 # =========================
 # BOYLE
 # =========================
