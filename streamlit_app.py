@@ -37,6 +37,7 @@ if menu == "Home":
 
     st.markdown("""
     ### 🔬 Fitur:
+    - Studi Kasus
     - Hukum Boyle
     - Hukum Charles
     - Hukum Gay-Lussac
@@ -370,15 +371,13 @@ elif pilihan == "Simulasi Massa Jenis Gas":
 # ====================================
 
     if st.button("✨ Tampilkan Hasil"):
-     # Efek loading
+        # Efek loading
         with st.spinner("Menghitung massa jenis gas..."):
             
             progress = st.progress(0)
             
             for i in range(100):
-                
                 time.sleep(0.01)
-                
                 progress.progress(i + 1)
      # Efek sukses
     st.success("Perhitungan berhasil✨!")
