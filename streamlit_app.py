@@ -33,7 +33,6 @@ if menu == "Home":
 
     st.subheader("👋 Selamat Datang")
 
-    st.success("Aplikasi ini dibuat full Streamlit tanpa library error 🚀")
 
     st.markdown("""
     ### 🔬 Fitur:
