@@ -23,7 +23,7 @@ st.markdown("---")
 # =========================
 menu = st.sidebar.selectbox(
     "📌 Pilih Menu",
-    ["Home", "Studi Kasus", "Hukum Boyle", "Hukum Charles", "Hukum Gay-Lussac", "Gas Ideal", "Regresi Linear"]
+    ["Home", "Studi Kasus", "Hukum Boyle", "Hukum Charles", "Hukum Gay-Lussac", "Gas Ideal", "Regresi Linear","Tentang Aplikasi"]
 )
 
 # =========================
