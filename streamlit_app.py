@@ -545,10 +545,11 @@ elif menu == "Regresi Linear":
 #=========================
 elif menu == "Tentang Aplikasi":
 
-    st.subheader("Tentang Aplikasi ini✨
-        Kalkulator Gas Ideal merupakan aplikasi berbasis web yang dirancang untuk membantu mahasiswa dan pengguna dalam melakukan perhitungan hukum gas ideal secara cepat, akurat, dan interaktif. Aplikasi ini mempermudah analisis hubungan antara tekanan (P), volume (V), suhu (T), dan jumlah mol (n) tanpa perlu melakukan perhitungan manual yang kompleks.
-        Dengan antarmuka yang sederhana dan mudah digunakan, aplikasi ini mendukung proses pembelajaran serta kegiatan laboratorium sehingga pengguna dapat memahami konsep hukum gas ideal dengan lebih efektif. Selain sebagai alat bantu perhitungan, aplikasi ini juga menjadi media pembelajaran digital yang mendukung efisiensi dan pemanfaatan teknologi dalam bidang kimia analisis.
-        ")
+    st.tittle("Tentang Aplikasi ini✨")
+    
+    st.write("""
+    Kalkulator gas ideal merupakan aplikasi berbasis web yang dirancang untuk membantu mahasiswa dan pengguna
+    """)
 
 # =========================
 # FOOTER
