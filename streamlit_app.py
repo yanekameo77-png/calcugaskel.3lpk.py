@@ -559,7 +559,7 @@ elif menu == "Tentang Aplikasi":
         Selain sebagai alat bantu hitungan, aplikasi ini juga menjadi media 
         pembelajaran digital yang mendukung efisiensi dan pemanfaatan teknologi
         dalam bidang kimia analisis.
-    """)
+        """)
 
 # =========================
 # FOOTER
