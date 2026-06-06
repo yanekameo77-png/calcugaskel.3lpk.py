@@ -23,7 +23,7 @@ st.markdown("---")
 # =========================
 menu = st.sidebar.selectbox(
     "📌 Pilih Menu",
-    ["Home", "Studi Kasus", "Hukum Boyle", "Hukum Charles", "Hukum Gay-Lussac", "Gas Ideal", "Regresi Linear","Kotak Saran","Tentang Aplikasi"]
+    ["Home", "Studi Kasus", "Hukum Boyle", "Hukum Charles", "Hukum Gay-Lussac", "Gas Ideal", "Regresi Linear","Tentang Aplikasi","Kotak Saran"]
 )
 
 # =========================
@@ -538,70 +538,6 @@ elif menu == "Regresi Linear":
 
         st.dataframe(df)
 
-#========================
-# Kotak Saran
-#========================
-elif menu == "Kotak Saran":
-
-    import smtplib
-    from email.mime.text import MIMEText
-
-    st.title("Kotak Saran📬")
-
-    st.markdown("""
-    <div style="
-    background:linear-gradient(to right,#BFEFFF,#87CEFA);
-    padding:20px;
-    border-radius:15px;
-    color:black;
-    ">
-    <h3>💡 Kritik dan Saran</h3>
-    <p>
-    Berikan masukan untuk pengembangan web aplikasi
-    kalkulator Gas Ideal.
-    </p>
-    </div>
-    """,
-    unsafe_allow_html=True)
-
-    st.markdown("<br>", unsafe_allow_html=True)
-    <from action="https://formspree.io/f/ISI_ID_FORMSPREE_ANDA"
-    method="POST">
-
-        <label>Nama</label><br>
-        <input type="text"
-               name="Nama"
-               required
-               style="width:100%;padding:10px;"><br><br>
-
-        <label>Saran</label><br>
-        textarea
-            name="Saran"
-            rows="6"
-            required
-            style="width:100%;padding:10px;">
-        </textarea><br><br>
-
-        <button type="submit"
-        style="
-        background:#1E90FF;
-        color:blue;
-        border:none;
-        padding:12px 20px;
-        border-radius:10px;
-        cursor:pointer;">
-        📩kirim saran
-        </button>
-            
-    </form>
-    """
-
-    st.markdown(
-        form_code,
-        unsafe_allow_html=True
-    )
-            
-   
 #=========================
 # LATAR BELAKANG APK
 #=========================
@@ -624,6 +560,31 @@ elif menu == "Tentang Aplikasi":
         pembelajaran digital yang mendukung efisiensi dan pemanfaatan teknologi
         dalam bidang kimia analisis.
         """)
+
+#========================
+# Kotak Saran
+#========================
+elif menu == "Kotak Saran":
+
+    st.link_button(
+        "📬Isi kotak saran",
+        "https://forms.gle/whtokShqsm9jkQuE6"
+    )
+
+st.write("""
+    ✨ Terima Kasih Telah Berkunjung
+    Semoga setiap perhitungan yang dilakukan dapat membantu anda memahami
+    dunia gas ideal dengan lebih mudah dan menyenangkan.
+    Terimakasih telah mencoba web aplikasi ini. Dukungan, kriitk dan saran 
+    dari anda menjadi motivasi bagi kami untuk terus menghadirkan firut yang lebih baik.
+
+    Tetaplah kuat
+    Walau kadang yang merusak mental justru
+    nilai mata uang rupiah yang semakin lemah
+
+    Dibuat oleh kelompok 3: Achmad Rifa`i (2560552), Bianca Titanya Wibowo (2560597),
+    Maulida Fathiyyah Khansa (2560666),Naila Safha Azzahra (2560702), Sandra Amelia Lian (2560772)
+    """)
 
 # =========================
 # FOOTER
