@@ -571,20 +571,20 @@ elif menu == "Kotak Saran":
         "https://forms.gle/whtokShqsm9jkQuE6"
     )
 
-st.write("""
-    ✨ Terima Kasih Telah Berkunjung
-    Semoga setiap perhitungan yang dilakukan dapat membantu anda memahami
-    dunia gas ideal dengan lebih mudah dan menyenangkan.
-    Terimakasih telah mencoba web aplikasi ini. Dukungan, kriitk dan saran 
-    dari anda menjadi motivasi bagi kami untuk terus menghadirkan firut yang lebih baik.
+    st.write("""
+        ✨ Terima Kasih Telah Berkunjung
+        Semoga setiap perhitungan yang dilakukan dapat membantu anda memahami
+        dunia gas ideal dengan lebih mudah dan menyenangkan.
+        Terimakasih telah mencoba web aplikasi ini. Dukungan, kriitk dan saran 
+        dari anda menjadi motivasi bagi kami untuk terus menghadirkan firut yang lebih baik.
 
-    Tetaplah kuat
-    Walau kadang yang merusak mental justru
-    nilai mata uang rupiah yang semakin lemah
+        Tetaplah kuat
+        Walau kadang yang merusak mental justru
+        nilai mata uang rupiah yang semakin lemah
 
-    Dibuat oleh kelompok 3: Achmad Rifa`i (2560552), Bianca Titanya Wibowo (2560597),
-    Maulida Fathiyyah Khansa (2560666),Naila Safha Azzahra (2560702), Sandra Amelia Lian (2560772)
-    """)
+        Dibuat oleh kelompok 3: Achmad Rifa`i (2560552), Bianca Titanya Wibowo (2560597),
+        Maulida Fathiyyah Khansa (2560666),Naila Safha Azzahra (2560702), Sandra Amelia Lian (2560772)
+        """)
 
 # =========================
 # FOOTER
