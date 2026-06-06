@@ -23,7 +23,7 @@ st.markdown("---")
 # =========================
 menu = st.sidebar.selectbox(
     "📌 Pilih Menu",
-    ["Home", "Studi Kasus", "Hukum Boyle", "Hukum Charles", "Hukum Gay-Lussac", "Gas Ideal", "Regresi Linear","Tentang Aplikasi"]
+    ["Home", "Studi Kasus", "Hukum Boyle", "Hukum Charles", "Hukum Gay-Lussac", "Gas Ideal", "Regresi Linear","Kotak Saran","Tentang Aplikasi"]
 )
 
 # =========================
@@ -543,11 +543,80 @@ elif menu == "Regresi Linear":
 #========================
 elif menu == "Kotak Saran":
 
-    st.subheader("Kotak Saran📬")
+    import smtplib
+    from email.mime.text import MIMEText
 
-    st.latex(r" ")
+    st.title("Kotak Saran📬")
 
+    st.markdown("""
+    Berikan kritik dan saran untuk pengembangan web aplikasi kalkulator Gas Ideal.
+    """)
 
+    nama = st.text_input("Nama")
+
+    email_pengguna = st.text_input(E-mail")
+
+    saran = st.text_area(
+        "Tulis saran anda",
+        height=200
+    )
+
+    if st.button("Kirim saran📩"):
+         if nama == "" or saran == "":
+
+            st.warning("Lengkapi data terlebih dahulu.")
+
+         else:
+             try:
+
+                 pengirim = st.secrets["E-mail"]
+                 password = st.secrets["Password"]
+
+                 penerima = st.secrets["E-mail"]
+
+                 isi_email = f"""
+    Nama : {nama}
+
+    E-mail : {email_pengguna}
+
+    Saran : 
+    {saran}
+    """
+                 msg = MIMEText(isi_email)
+
+                 msg["Subject"] = "Saran Web Aplikasi Gas Ideal"
+                 msg["From"] = pengirim
+                 msg["To"] = penerima
+
+                 server = smtplib.SMTP(
+                     "smtp.gmail.com",
+                     587
+                 )
+
+                 server.strattls()
+
+                 server.login(
+                     pengirim,
+                     password
+                 )
+
+                server.sendmail(
+                    pengirim,
+                    penerima,
+                    msg.as_string()
+                )
+
+                server.quit()
+
+                st.succes(
+                    "Saran berhasil dikirim."
+                )
+
+    except exception as e:
+
+        st.error(
+            f"Gagal mengirim e-mail: {e}"
+        )                
 
 #=========================
 # LATAR BELAKANG APK
